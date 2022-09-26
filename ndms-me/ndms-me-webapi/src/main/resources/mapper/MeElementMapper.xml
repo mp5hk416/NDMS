@@ -47,17 +47,23 @@
     
     <delete id="deleteMeElementByIds">
         DELETE FROM me_db WHERE id in
-        <foreach collection="array" separator="," open="(" close=")">
+        <foreach collection="array" item="id" separator="," open="(" close=")">
             #{id}
         </foreach>
     </delete>
 
     <delete id="deleteMeElementByUploaderIds">
         DELETE FROM me_db WHERE uploader_id in
-        <foreach collection="array" separator="," open="(" close=")">
+        <foreach collection="array" item="uploaderId" separator="," open="(" close=")">
             #{id}
         </foreach>
     </delete>
+
+    <select id="countById" resultType="int">
+        SELECT COUNT(*) FROM me_db WHERE id = #{id}
+    </select>
+
+
 
 
 

@@ -51,6 +51,14 @@ public class MeElementController {
         return JsonResult.ok("添加成功");
     }
 
+    @PostMapping("/deleteByIds")
+    @ApiOperation("刪除組件")
+    @ApiOperationSupport(order = 300)
+    public JsonResult deleteByIds(Long... ids){
+        meElementService.deleteMeElementByIds(ids);
+        return JsonResult.ok("刪除成功");
+    }
+
 
 
 

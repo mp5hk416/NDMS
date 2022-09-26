@@ -63,6 +63,9 @@ public class MeElementServiceImpl implements MeElementService {
         if (meElementMapper.countByPartNumber(meElementDTO.getPartNumber())>=1){
             throw new NDMSException(ResponseState.BAD_REQUEST,"料號重複");
         }
+        if (meElementMapper.countById(meElementDTO.getId())>=1){
+            meElementDTO.setId(null);
+        }
         MeElementEntity meElementEntity = new MeElementEntity();
         BeanUtils.copyProperties(meElementDTO,meElementEntity);
         meElementEntity.setCreatedDate(LocalDateTime.now());
@@ -75,12 +78,25 @@ public class MeElementServiceImpl implements MeElementService {
     }
 
     @Override
-    public void deleteMeElementById(Long id) {
-
+    public void deleteMeElementByIds(Long... ids) {
+        for (Long id : ids) {
+            if (meElementMapper.countById(id)!=1)
+                throw new NDMSException(ResponseState.NOT_FOUND,"相關Id找不到");
+        }
+        int rows = meElementMapper.deleteMeElementByIds(ids);
+        if (rows<1)
+            throw new NDMSException(ResponseState.BAD_REQUEST,"無法預知的錯誤");
     }
 
     @Override
-    public void deleteMeElementByUploaderId(Long uploaderId) {
+    public void deleteMeElementByUploaderIds(Long...uploaderIds) {
+        for (Long uploaderId : uploaderIds) {
+            if (meElementMapper.countByUploaderId(uploaderId)<=0)
+                throw new NDMSException(ResponseState.NOT_FOUND,"沒有相關上傳者ID");
+        }
+        int rows = meElementMapper.deleteMeElementByUploaderIds(uploaderIds);
+        if (rows<1)
+            throw new NDMSException(ResponseState.BAD_REQUEST,"無法預知的錯誤");
 
     }
 

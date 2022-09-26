@@ -13,8 +13,8 @@ public interface MeElementService {
 
     void addMeElement(MeElementDTO meElementDTO);
 
-    void deleteMeElementById(Long id);
+    void deleteMeElementByIds(Long... id);
 
-    void deleteMeElementByUploaderId(Long uploaderId);
+    void deleteMeElementByUploaderIds(Long... uploaderId);
 
 }

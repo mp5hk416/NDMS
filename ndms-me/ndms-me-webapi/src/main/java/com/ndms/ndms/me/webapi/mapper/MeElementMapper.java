@@ -23,4 +23,7 @@ public interface MeElementMapper {
     int deleteMeElementByUploaderIds(Long... uploaderId);
 
     int countByPartNumber(String partNumber);
+
+    int countById(Long id);
+
 }
