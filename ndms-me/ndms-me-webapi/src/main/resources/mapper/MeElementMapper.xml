@@ -63,10 +63,49 @@
         SELECT COUNT(*) FROM me_db WHERE id = #{id}
     </select>
 
+    <update id="updateMeElementById">
+        UPDATE me_db
+        <set>
+            <if test="partName!=null">
+                part_name=#{partName},
+            </if>
+            <if test="attributionId!=null">
+                attribution_id=#{attributionId},
+            </if>
+            <if test="uploader!=null">
+                uploader=#{uploader},
+            </if>
+            <if test="uploaderId!=null">
+                uploader_id=#{uploaderId},
+            </if>
+            <if test="description!=null">
+                description=#{description},
+            </if>
+            <if test="url2d!=null">
+                url_2d=#{url2d},
+            </if>
+            <if test="url3d!=null">
+                url_3d=#{url3d},
+            </if>
+            <if test="manufacture">
+                manufacture=#{manufacture},
+            </if>
+            <if test="manufactureId">
+                manufacture_id=#{manufactureId},
+            </if>
+            <if test="createdDate!=null">
+                created_date=#{createdDate},
+            </if>
+            <if test="updateDate">
+                update_date=#{updateDate},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
 
-
-
-
+    <select id="getById" resultMap="listMap">
+        SELECT <include refid="MeElementQuery"/> FROM me_db WHERE id=#{id}
+    </select>
 
 
 

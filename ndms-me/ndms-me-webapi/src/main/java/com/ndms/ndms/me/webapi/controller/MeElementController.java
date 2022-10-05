@@ -44,7 +44,7 @@ public class MeElementController {
     }
 
     @PostMapping("/addnew")
-    @ApiOperation("新增組件")
+    @ApiOperation("新增機構組件")
     @ApiOperationSupport(order = 200)
     public JsonResult addMeElement(MeElementDTO meElementDTO){
         meElementService.addMeElement(meElementDTO);
@@ -52,12 +52,21 @@ public class MeElementController {
     }
 
     @PostMapping("/deleteByIds")
-    @ApiOperation("刪除組件")
+    @ApiOperation("刪除機構組件")
     @ApiOperationSupport(order = 300)
     public JsonResult deleteByIds(Long... ids){
         meElementService.deleteMeElementByIds(ids);
         return JsonResult.ok("刪除成功");
     }
+
+    @PostMapping("/update")
+    @ApiOperation("更新機構組件")
+    @ApiOperationSupport(order = 400)
+    public JsonResult updateMeElement(MeElementDTO meElementDTO){
+        meElementService.updateState(meElementDTO);
+        return JsonResult.ok("更新成功");
+    }
+
 
 
 

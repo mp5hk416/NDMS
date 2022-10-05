@@ -100,5 +100,14 @@ public class MeElementServiceImpl implements MeElementService {
 
     }
 
-
+    @Override
+    public void updateState(MeElementDTO meElementDTO) {
+        if (meElementMapper.getById(meElementDTO.getId())!=null){
+            MeElementEntity meElementEntity = new MeElementEntity();
+            BeanUtils.copyProperties(meElementDTO,meElementEntity);
+            meElementEntity.setUpdateDate(LocalDateTime.now());
+            meElementMapper.updateMeElementById(meElementEntity);
+        }else
+        throw new NDMSException(ResponseState.BAD_REQUEST,"沒有確認對應用戶");
+    }
 }

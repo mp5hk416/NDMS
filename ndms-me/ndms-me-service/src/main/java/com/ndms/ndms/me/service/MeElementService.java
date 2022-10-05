@@ -17,4 +17,8 @@ public interface MeElementService {
 
     void deleteMeElementByUploaderIds(Long... uploaderId);
 
+    void updateState(MeElementDTO meElementDTO);
+
+
+
 }

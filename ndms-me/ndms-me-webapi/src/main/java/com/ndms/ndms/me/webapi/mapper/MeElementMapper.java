@@ -26,4 +26,8 @@ public interface MeElementMapper {
 
     int countById(Long id);
 
+    void updateMeElementById(MeElementEntity meElementEntity);
+
+    MeElementVO getById(Long id);
+
 }
