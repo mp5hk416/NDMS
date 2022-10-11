@@ -1,10 +1,8 @@
-package com.ndms.ndms.pojo.me.me_dto;
+package com.ndms.ndms.pojo.me.me_DTO;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-
-import java.time.LocalDateTime;
 
 /**
  * Hi 俊翔

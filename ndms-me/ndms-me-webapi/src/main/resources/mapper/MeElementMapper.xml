@@ -8,7 +8,7 @@
         id,part_name,part_number,attribution_id,uploader,uploader_id,description,url_2d,url_3d,manufacture,manufacture_id,created_date,update_date
     </sql>
 
-    <resultMap id="listMap" type="com.ndms.ndms.pojo.me.me_vo.MeElementVO">
+    <resultMap id="listMap" type="com.ndms.ndms.pojo.me.me_VO.MeElementVO">
         <id column="id" property="id"/>
         <result column="part_name" property="partName"/>
         <result column="part_number" property="partNumber"/>

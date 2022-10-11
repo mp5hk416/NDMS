@@ -1,4 +1,4 @@
-package com.ndms.ndms.pojo.me.me_vo;
+package com.ndms.ndms.pojo.me.me_VO;
 
 import lombok.Data;
 

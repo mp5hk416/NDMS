@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ndms.ndms.passport.webapi.mapper.MeEmpMapper">
+    <sql id="MeEmpQuery">
+        id,username,emp_number,password,mail,cell_phone,enable,locked,last_login_ip,login_count,gmt_last_login,gmt_created,gmt_modified
+    </sql>
+
+    <select id="countByUsername" resultType="int">
+        SELECT COUNT(*) FROM me_emp_admin WHERE username = #{username}
+    </select>
+
+    <insert id="addAdmin" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO me_emp_admin(id,username,emp_number,password,mail,cell_phone,enable,locked,
+        last_login_ip,login_count,gmt_last_login,gmt_created,gmt_modified) VALUES(#{id},#{username},#{empNumber},#{password},
+        #{mail},#{cellPhone},#{enable},#{locked},#{lastLoginIp},#{loginCount},#{gmtLastLogin},#{gmtCreated},#{gmtModified})
+    </insert>
+</mapper>

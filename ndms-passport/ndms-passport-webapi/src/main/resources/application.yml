@@ -1,0 +1,22 @@
+logging:
+  level:
+    com.ndms.ndms: trace
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ndms_me_ams?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+
+mybatis:
+  mapper-locations:
+    - classpath:mapper/*.xml
+  configuration:
+    cache-enabled: false
+    map-underscore-to-camel-case: true
+
+
+
+
+knife4j:
+  enable: true

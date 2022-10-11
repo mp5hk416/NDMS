@@ -30,6 +30,7 @@
         <module>ndms-me</module>
         <module>ndms-commons</module>
         <module>ndms-pojo</module>
+        <module>ndms-passport</module>
     </modules>
 
     <dependencies>
@@ -49,7 +50,10 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
     </dependencies>
 

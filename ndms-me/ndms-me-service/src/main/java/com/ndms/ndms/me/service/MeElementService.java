@@ -1,7 +1,7 @@
 package com.ndms.ndms.me.service;
 
-import com.ndms.ndms.pojo.me.me_dto.MeElementDTO;
-import com.ndms.ndms.pojo.me.me_vo.MeElementVO;
+import com.ndms.ndms.pojo.me.me_DTO.MeElementDTO;
+import com.ndms.ndms.pojo.me.me_VO.MeElementVO;
 
 import java.util.List;
 

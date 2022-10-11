@@ -1,8 +1,7 @@
 package com.ndms.ndms.me.webapi.mapper;
 
-import com.ndms.ndms.pojo.me.me_do.MeElementEntity;
-import com.ndms.ndms.pojo.me.me_dto.MeElementDTO;
-import com.ndms.ndms.pojo.me.me_vo.MeElementVO;
+import com.ndms.ndms.pojo.me.me_DO.MeElementEntity;
+import com.ndms.ndms.pojo.me.me_VO.MeElementVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
