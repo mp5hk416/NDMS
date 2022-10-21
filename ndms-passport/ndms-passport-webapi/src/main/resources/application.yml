@@ -8,14 +8,18 @@ spring:
     username: root
     password: root
 
+jwt:
+  tokenHeader: Authorization
+  secret: NDMSSecretKey
+  expiration: 86400 #一天秒數
+  tokenHeadName: NDMS
+
 mybatis:
   mapper-locations:
     - classpath:mapper/*.xml
   configuration:
     cache-enabled: false
     map-underscore-to-camel-case: true
-
-
 
 
 knife4j:

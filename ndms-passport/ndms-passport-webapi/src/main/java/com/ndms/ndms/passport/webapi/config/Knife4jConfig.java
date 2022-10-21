@@ -1,4 +1,4 @@
-package com.ndms.ndms.me.webapi.config;
+package com.ndms.ndms.passport.webapi.config;
 
 import com.github.xiaoymin.knife4j.spring.extension.OpenApiExtensionResolver;
 import lombok.EqualsAndHashCode;
@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebMvc;
 @Configuration
 @EnableSwagger2WebMvc
 @EqualsAndHashCode(callSuper = false)
-public class Knife4jConfiguration {
+public class Knife4jConfig {
 
     @Autowired
     private OpenApiExtensionResolver openApiExtensionResolver;
@@ -33,7 +33,7 @@ public class Knife4jConfiguration {
                 .apiInfo(apiInfo())
                 .groupName(groupName) //分组名称
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.ndms.ndms.me.webapi.controller")) //这里指定Controller扫描包路径
+                .apis(RequestHandlerSelectors.basePackage("com.ndms.ndms.passport.webapi.controller")) //这里指定Controller扫描包路径
                 .paths(PathSelectors.any())
                 .build()
                 .extensions(openApiExtensionResolver.buildExtensions(groupName));
@@ -42,8 +42,8 @@ public class Knife4jConfiguration {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("NDMS系統")
-                .description("機種零組件查詢系統")
+                .title("NDMS用戶登陸系統")
+                .description("使用者查詢系統")
                 .termsOfServiceUrl("http://www.ndms.com")
                 .contact(new Contact("jsd@ndms.com", "http://jsd.ndms.comn", "jsd@ndms.com"))
                 .version("1.0.0")

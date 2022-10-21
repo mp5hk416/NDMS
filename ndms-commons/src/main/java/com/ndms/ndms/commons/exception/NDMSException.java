@@ -2,6 +2,7 @@ package com.ndms.ndms.commons.exception;
 
 import com.ndms.ndms.commons.restful.ResponseState;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * 規劃自己，超越自己
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class NDMSException extends RuntimeException{
 
     private ResponseState responseState;

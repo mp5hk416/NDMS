@@ -2,6 +2,7 @@ package com.ndms.ndms.pojo.me.me_DO;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
  * 規劃自己，超越自己
  */
 @Data
-public class MeElementEntity {
+public class MeElementEntity implements Serializable {
 
     private Long id;
     private String partName;

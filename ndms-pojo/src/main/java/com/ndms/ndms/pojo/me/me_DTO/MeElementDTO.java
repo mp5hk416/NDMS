@@ -4,6 +4,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * Hi 俊翔
  * 現在是下午 02:38 2022/9/19 2022
@@ -13,7 +15,7 @@ import lombok.Data;
  */
 @Data
 @ApiModel(value="機構件表用")
-public class MeElementDTO {
+public class MeElementDTO implements Serializable {
 
     @ApiModelProperty(value = "機構件id",name = "id",example = "8", required = true,allowEmptyValue = true)
     private Long id;

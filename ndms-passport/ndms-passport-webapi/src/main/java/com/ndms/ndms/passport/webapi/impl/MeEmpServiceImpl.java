@@ -6,13 +6,14 @@ import com.ndms.ndms.passport.service.MeEmpService;
 import com.ndms.ndms.passport.webapi.mapper.MeEmpMapper;
 import com.ndms.ndms.pojo.ams.me_ams.ams_DO.MeAdminDO;
 import com.ndms.ndms.pojo.ams.me_ams.ams_DTO.MeAdminAddDTO;
+import com.ndms.ndms.pojo.ams.me_ams.ams_VO.MeAdminVO;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * 時間:2022/10/11  下午 11:55
@@ -26,6 +27,7 @@ public class MeEmpServiceImpl implements MeEmpService {
 
     @Autowired
     private MeEmpMapper meEmpMapper;
+
 
 
     @Override
@@ -50,8 +52,14 @@ public class MeEmpServiceImpl implements MeEmpService {
             }
         }
 
-
         meEmpMapper.addAdmin(meAdminDO);
 
+    }
+
+    @Override
+    public List<MeAdminVO> getMeAdmin() {
+
+        List<MeAdminVO> meAdminVOS = meEmpMapper.listAllMeAdmin();
+        return meAdminVOS;
     }
 }
