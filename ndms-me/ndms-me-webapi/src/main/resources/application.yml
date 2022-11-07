@@ -1,3 +1,6 @@
+my:
+  server:
+    addr: 127.0.0.1
 logging:
   level:
     com.ndms.ndms: trace
@@ -7,6 +10,13 @@ spring:
     url: jdbc:mysql://localhost:3306/ndms_me?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
     username: root
     password: root
+  application:
+    name: ndms_me
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${my.server.addr}:8848
+
 
 mybatis:
   mapper-locations:
@@ -15,7 +25,20 @@ mybatis:
     cache-enabled: false
     map-underscore-to-camel-case: true
 
+jwt:
+  tokenHeader: Authorization
+  secret: NDMSSecretKey
+  expiration: 86400 #一天秒數
+  tokenHeadName: NDMS
 
+dubbo:
+  protocol:
+    port: -1
+    name: dubbo
+  registry:
+    address: nacos://localhost:8848
+  consumer:
+    check: false
 
 
 knife4j:

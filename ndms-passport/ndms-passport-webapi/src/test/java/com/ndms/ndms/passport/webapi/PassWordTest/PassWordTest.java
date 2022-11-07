@@ -18,7 +18,7 @@ public class PassWordTest {
     @Test
     public void BCryptCreate(){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String password = "tomtomisgood";
+        String password = "mp5hk416";
         String newPassword = passwordEncoder.encode(password);
         log.debug("加密後:{}結束",newPassword);
 

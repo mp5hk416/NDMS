@@ -1,4 +1,4 @@
-package com.ndms.ndms.passport.webapi.security.pojo;
+package com.ndms.ndms.commons.pojo;
 
 import lombok.Data;
 
@@ -14,5 +14,9 @@ public class LoginPinciple {
     private Long id;
 
     private String username;
+
+    private String empNumber;
+
+    private String roleName;
 
 }

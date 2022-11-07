@@ -1,8 +1,8 @@
 package com.ndms.ndms.passport.webapi.security.impl;
 
 import com.ndms.ndms.commons.exception.NDMSException;
-import com.ndms.ndms.passport.webapi.mapper.EmpMapper;
-import com.ndms.ndms.passport.webapi.pojo.empDO.EmpAuthority;
+import com.ndms.ndms.commons.pojo.EmpAuthority;
+import com.ndms.ndms.passport.webapi.mapper.EmpAdminMapper;
 import com.ndms.ndms.passport.webapi.pojo.empVO.EmpLoginVO;
 import com.ndms.ndms.passport.webapi.pojo.empVO.EmpInfoDetail;
 import lombok.extern.slf4j.Slf4j;
@@ -27,13 +27,13 @@ import java.util.List;
 public class EmpUserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private EmpMapper empMapper;
+    private EmpAdminMapper empAdminMapper;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         EmpLoginVO empLoginVO = null;
         try {
-            empLoginVO = empMapper.getMeEmpByUsername(username);
+            empLoginVO = empAdminMapper.getLoginEmpByUsername(username);
             log.info("獲取對象:{}",empLoginVO.toString());
         } catch (NDMSException e) {
             throw new BadCredentialsException("員工名稱找不到，重新登入");
@@ -49,14 +49,15 @@ public class EmpUserDetailsServiceImpl implements UserDetailsService {
         for (String authority : authorities) {
             empAuthorities.add(new EmpAuthority(authority));
         }
-
         EmpInfoDetail empInfoDetail = new EmpInfoDetail(
                 empLoginVO.getUsername(),
                 empLoginVO.getPassword(),
-                empLoginVO.getEnable()==1,
+                empLoginVO.getEnable() != 0,
                 empAuthorities
         );
         empInfoDetail.setId(empLoginVO.getId());
+        empInfoDetail.setEmpNumber(empLoginVO.getEmpNumber());
+        empInfoDetail.setRoleName(empLoginVO.getRoleName());
         log.info("員工資訊:{}",empInfoDetail);
 
         return empInfoDetail;

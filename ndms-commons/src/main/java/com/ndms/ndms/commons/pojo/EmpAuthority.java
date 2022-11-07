@@ -1,11 +1,8 @@
-package com.ndms.ndms.passport.webapi.pojo.empDO;
+package com.ndms.ndms.commons.pojo;
 
-import io.jsonwebtoken.lang.Assert;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-
-import java.io.Serializable;
 
 /**
  * 時間:2022/10/15  上午 09:19
@@ -22,4 +19,6 @@ public class EmpAuthority implements GrantedAuthority {
     public EmpAuthority(String authority) {
         this.authority = authority;
     }
+
+
 }

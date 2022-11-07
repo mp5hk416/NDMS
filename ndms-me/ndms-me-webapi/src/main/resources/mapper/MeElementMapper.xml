@@ -5,7 +5,7 @@
 <mapper namespace="com.ndms.ndms.me.webapi.mapper.MeElementMapper">
 
     <sql id="MeElementQuery">
-        id,part_name,part_number,attribution_id,uploader,uploader_id,description,url_2d,url_3d,manufacture,manufacture_id,created_date,update_date
+        id,part_name,part_number,attribution_id,uploader,uploader_id,description,url_2d,url_3d,manufacture_id,created_date,update_date
     </sql>
 
     <resultMap id="listMap" type="com.ndms.ndms.pojo.me.me_VO.MeElementVO">

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ndms.ndms.passport.webapi.mapper.EmpMapper">
+<mapper namespace="com.ndms.ndms.passport.webapi.mapper.EmpAdminMapper">
 
-    <resultMap id="MeEmp" type="com.ndms.ndms.passport.webapi.pojo.empVO.EmpLoginVO">
+    <resultMap id="EmpLoginUse" type="com.ndms.ndms.passport.webapi.pojo.empVO.EmpLoginVO">
         <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result column="emp_number" property="empNumber"/>
@@ -18,12 +18,12 @@
     </resultMap>
 
 
-    <select id="getMeEmpByUsername" resultMap="MeEmp">
+    <select id="getLoginEmpByUsername" resultMap="EmpLoginUse">
         SELECT ea.id,ea.username,ea.emp_number,ea.password,ea.enable,er.role_name,eau.value
-                     FROM me_emp_admin ea LEFT JOIN me_emp_admin_role ear ON ea.id = ear.admin_id
-                     LEFT JOIN me_emp_role er ON ear.role_id = er.id
-                     LEFT JOIN me_emp_role_authority era ON er.id = era.role_id
-                     LEFT JOIN me_emp_authority eau ON era.authority_id = eau.id
+                     FROM emp_admin ea LEFT JOIN emp_admin_role ear ON ea.id = ear.admin_id
+                     LEFT JOIN emp_role er ON ear.role_id = er.id
+                     LEFT JOIN emp_role_authority era ON er.id = era.role_id
+                     LEFT JOIN emp_authority eau ON era.authority_id = eau.id
                      WHERE ea.username = #{username} ORDER BY ea.id ASC;
     </select>
 

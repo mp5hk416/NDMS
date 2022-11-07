@@ -1,10 +1,8 @@
-package com.ndms.ndms.pojo.ams.me_ams.ams_DTO;
+package com.ndms.ndms.pojo.ams.emp.ams_DTO;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-
-import java.time.LocalDateTime;
 
 /**
  * 時間:2022/10/11  下午 10:48
@@ -14,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Data
 @ApiModel(value="新增管理員表用")
-public class MeAdminAddDTO {
+public class EmpAdminAddDTO {
 
     @ApiModelProperty(value = "管理員id",name = "id",example = "1", required = true, allowEmptyValue = true)
     private Long id;
@@ -24,6 +22,8 @@ public class MeAdminAddDTO {
     private String empNumber;
     @ApiModelProperty(value = "密碼",name = "password",example = "mp5hk416", required = true)
     private String password;
+    @ApiModelProperty(value = "部門id",name = "depId",example = "1", required = true)
+    private Long depId;
     @ApiModelProperty(value = "管理員信箱",name = "mail" ,example = "mp5hk41@gmail.com", required = true,allowEmptyValue = true)
     private String mail;
     @ApiModelProperty(value = "管理員手機",name = "cellPhone" ,example = "886912345678", required = true,allowEmptyValue = true)

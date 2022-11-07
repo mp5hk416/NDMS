@@ -1,9 +1,9 @@
-package com.ndms.ndms.passport.webapi.filter;
+package com.ndms.ndms.me.webapi.filter;
 
 import com.alibaba.fastjson.JSON;
 import com.ndms.ndms.commons.pojo.EmpAuthority;
-import com.ndms.ndms.commons.utils.JwtUtils;
 import com.ndms.ndms.commons.pojo.LoginPinciple;
+import com.ndms.ndms.commons.utils.JwtUtils;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +40,7 @@ public class JwtAuthorityFilter extends OncePerRequestFilter {
     @Value("${jwt.tokenHeadName}")
     private String tokenHeadName;
 
-    @Autowired(required = false)
+    @Autowired
     private JwtUtils jwtUtils;
 
     @Autowired
@@ -60,6 +60,7 @@ public class JwtAuthorityFilter extends OncePerRequestFilter {
         String redis_key = "redis_userInfo_key";
 
         if (!StringUtils.hasText(JwtWithName)){
+
             filterChain.doFilter(httpServletRequest,httpServletResponse);
             return;
         }

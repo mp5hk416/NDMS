@@ -8,6 +8,7 @@ import com.ndms.ndms.pojo.me.me_VO.MeElementVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class MeElementController {
     @GetMapping("/getall")
     @ApiOperation("查詢機構")
     @ApiOperationSupport(order=100)
+    @PreAuthorize("hasAnyAuthority('/meElement/list') AND hasAuthority('/meElement/add') AND hasAnyAuthority('/meElement/delete') AND hasAnyAuthority('/meElement/update')")
     public JsonResult getAll(){
         List<MeElementVO> allMeElement = meElementService.getAllMeElement();
         return JsonResult.ok(allMeElement);
@@ -38,6 +40,7 @@ public class MeElementController {
     @GetMapping("/get/{uploaderId}")
     @ApiOperation("藉uploaderid查詢機構")
     @ApiOperationSupport(order=101)
+    @PreAuthorize("hasAnyAuthority('/meElement/list')")
     public JsonResult getByUploaderId(@PathVariable Long uploaderId){
         List<MeElementVO> meElements = meElementService.getMeElementByUploaderId(uploaderId);
         return JsonResult.ok(meElements);
@@ -46,6 +49,7 @@ public class MeElementController {
     @PostMapping("/addnew")
     @ApiOperation("新增機構組件")
     @ApiOperationSupport(order = 200)
+    @PreAuthorize("hasAuthority('/meElement/add')")
     public JsonResult addMeElement(MeElementDTO meElementDTO){
         meElementService.addMeElement(meElementDTO);
         return JsonResult.ok("添加成功");
@@ -54,6 +58,7 @@ public class MeElementController {
     @PostMapping("/deleteByIds")
     @ApiOperation("刪除機構組件")
     @ApiOperationSupport(order = 300)
+    @PreAuthorize("hasAuthority('/meElement/delete')")
     public JsonResult deleteByIds(Long... ids){
         meElementService.deleteMeElementByIds(ids);
         return JsonResult.ok("刪除成功");
@@ -62,6 +67,7 @@ public class MeElementController {
     @PostMapping("/update")
     @ApiOperation("更新機構組件")
     @ApiOperationSupport(order = 400)
+    @PreAuthorize("hasAuthority('/meElement/update')")
     public JsonResult updateMeElement(MeElementDTO meElementDTO){
         meElementService.updateState(meElementDTO);
         return JsonResult.ok("更新成功");

@@ -1,12 +1,11 @@
-package com.ndms.ndms.passport.webapi.security.config;
+package com.ndms.ndms.me.webapi.security.config;
 
-import com.ndms.ndms.passport.webapi.filter.JwtAuthorityFilter;
+import com.ndms.ndms.me.webapi.filter.JwtAuthorityFilter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -30,16 +29,16 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Bean
-    CorsConfigurationSource corsConfigurationSource(){//針對普通簡單請求前的預檢請求，由於該請求不攜帶cookie，spring security憑證上可能會出錯，故添加該對象
-        CorsConfigurationSource source =   new UrlBasedCorsConfigurationSource();
-        CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.addAllowedOrigin("*");	//同源配置，*表示任何请求都视为同源，若需指定ip和端口可以改为如“localhost：8080”，多个以“，”分隔；
-        corsConfiguration.addAllowedHeader("Authorization");//header，允许哪些header，本案中使用的是token，此处可将*替换为token；
-        corsConfiguration.addAllowedMethod("*");	//允许的请求方法，PSOT、GET等
-        ((UrlBasedCorsConfigurationSource) source).registerCorsConfiguration("/**",corsConfiguration); //配置允许跨域访问的url
-        return source;
-    }
+//    @Bean
+//    CorsConfigurationSource corsConfigurationSource(){//針對普通簡單請求前的預檢請求，由於該請求不攜帶cookie，spring security憑證上可能會出錯，故添加該對象
+//        CorsConfigurationSource source =   new UrlBasedCorsConfigurationSource();
+//        CorsConfiguration corsConfiguration = new CorsConfiguration();
+//        corsConfiguration.addAllowedOrigin("*");	//同源配置，*表示任何请求都视为同源，若需指定ip和端口可以改为如“localhost：8080”，多个以“，”分隔；
+//        corsConfiguration.addAllowedHeader("Authorization");//header，允许哪些header，本案中使用的是token，此处可将*替换为token；
+//        corsConfiguration.addAllowedMethod("*");	//允许的请求方法，PSOT、GET等
+//        ((UrlBasedCorsConfigurationSource) source).registerCorsConfiguration("/**",corsConfiguration); //配置允许跨域访问的url
+//        return source;
+//    }
 
     @Autowired
     private JwtAuthorityFilter jwtAuthorityFilter;
@@ -55,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/**/*.css",
             "/**/*.js",
             "/**/emp/login",
-            "/**/emp/register"
+            "/**/emp/logout"
     };
 
 
